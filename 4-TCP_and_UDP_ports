@@ -1,9 +1,0 @@
-#!/bin/bash
-# Script: 4-TCP_and_UDP_ports
-# Objectif: Afficher les sockets TCP/UDP en écoute avec PID et nom du programme
-
-echo "Active Internet connections (only servers)"
-ss -tulnp | grep LISTEN
-
-echo "Active UNIX domain sockets (only servers)"
-ss -xlnp
