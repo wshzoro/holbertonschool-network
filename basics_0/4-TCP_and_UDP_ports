@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
-# Bash script that display listening ports with PID and program names for listening sockets.
-netstat -a -p
+# Script: Affiche les ports TCP/UDP et les sockets UNIX en écoute avec PID et programme
+
+# Affiche les connexions Internet (TCP et UDP) en écoute
+echo "Active Internet connections (only servers)"
+ss -tulnp
+
+# Affiche les sockets UNIX en écoute
+echo "Active UNIX domain sockets (only servers)"
+ss -xlnp
