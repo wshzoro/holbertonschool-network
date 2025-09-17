@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script displays all active IPv4 IPs on the machine
+
+set -euo pipefail
+
+if command -v ip >/dev/null 2>&1; then
+  # Linux (Ubuntu 22.04) with ip command
+  ip -4 addr show | awk '/inet / {print $2}' | cut -d/ -f1
+elif command -v ifconfig >/dev/null 2>&1; then
+  # macOS or BSD systems
+  ifconfig | awk '/inet / {print $2}'
+else
+  echo "No suitable command (ip or ifconfig) found" >&2
+  exit 1
+fi
