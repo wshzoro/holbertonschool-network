@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Listen on port 98 on localhost (127.0.0.2) and print any received text
+
+set -euo pipefail
+
+PORT=98
+IP=127.0.0.2
+
+printf '%s\n' "Starting my script."
+
+# Ensure the loopback has 127.0.0.2
+sudo ip addr add 127.0.0.2/8 dev lo 2>/dev/null || true
+
+# Listen indefinitely (-k) for incoming connections
+nc -4 -l -k -p "$PORT" -s "$IP"
